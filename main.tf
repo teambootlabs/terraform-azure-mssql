@@ -20,7 +20,12 @@ resource "azurerm_mssql_server" "mssql_server" {
   administrator_login_password = var.mssql_server_administraxtion_login_password
 }
 
-
+resource "azurerm_management_lock" "rglock" {
+  name       = "resource-group-level"
+  scope      = azurerm_resource_group.mssql_resource_group.id
+  lock_level = "ReadOnly"
+  notes      = "This Resource Group is Read-Only"
+}
 
 resource "azurerm_mssql_database" "mssql_database" {
 
