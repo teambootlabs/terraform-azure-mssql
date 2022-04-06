@@ -1,4 +1,4 @@
 output "id" {
-  description = "The Load Balancer virtual machine."
+  description = "Id of the mssql database created "
   value       = azurerm_mssql_database.mssql_database.id
 }
